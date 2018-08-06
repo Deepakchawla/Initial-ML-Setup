@@ -1,6 +1,34 @@
 
 declare -a pip_packages=('django' 'numpy' 'nose' 'pip' 'matplotlib' 'pandas' 'nose' 'scipy' 'html5lib' 'statsmodels' 'beautifulsoup' 'virtualenv' 'scipy' 'scikit-learn' 'sympy' 'bokeh' 'plotly' 'Gensim' 'Scrapy' 'Statsmodels' 'testtools' 'sklearn' 'scikit-image' 'statsmodels' 'xlrd' 'geopy' 'shapely' 'pyproj' 'xlsxwriter' 'pyip' 'paramiko' 'flake8' 'mpi4py' 'power' 'pytest' 'html5lib' 'pytc' 'pytz' 'python-dateutil' 'setuptools' 'seaborn' 'scipy' '-U tensorflow' 'keras' 'spark' 'requests[security]' 'cryptography' '--upgrade pip' '--upgrade ndg-httpsclient' 'quandl' 'theano')
 
+declare -a apt_get_packages=('oracle-java8-installer' 'build-essential' 'software-properties-common' 'python-dev' 'scala' 'g++' 'libopenblas-dev' 'git' 'spyder' 'ipython' 'ipython-notebook' 'zlibc' 'libssl-dev libffi-dev' 'zlib1g zlib1g-dev')
+
+function essential() {
+	figlet MachineLearning
+	echo -e " \e[94m (To install all ML packages and libraries)\e[0m"
+	sudo apt-get update > /dev/null
+	echo -ne '\n' | sudo apt-add-repository ppa:webupd8team/java > /dev/null
+	echo -ne '\n' | sudo add-apt-repository ppa:pythonxy/pythonxy-devel > /dev/null
+	sudo apt-get update > /dev/null
+	sudo python -m easy_install --upgrade pyOpenSSL
+	wget https://repo.continuum.io/archive/Anaconda3-4.1.1-Linux-x86_64.sh
+	bash Anaconda3-4.1.1-Linux-x86_64.sh
+	source .bashrc
+
+
+   for i in "${apt_get_packages[@]}"
+do	
+  sudo apt-get install $i
+done
+
+ # Check Essential packages install
+ if [ $? = 0 ]; then
+   echo "Installation Successfully"
+ else
+   echo "Problems to install Essential packages check this!"
+ fi
+}
+
 function pip_install() {
   # Install numpy
   output=$(sudo -H pip install $i)
@@ -22,6 +50,7 @@ function pip_install() {
 
 case $1 in	
   all)
+   essential
 	echo "Loading"
     for i in "${pip_packages[@]}"
 	do	
