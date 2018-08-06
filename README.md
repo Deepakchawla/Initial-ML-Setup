@@ -1,13 +1,15 @@
 # Initial-ML-Setup-
 One script to install all major python libraries for developing Machine Learning application.
 
+![alt text](http://enriquescribano.com/wordpress/wp-content/uploads/bfi_thumb/ml-nh78yskwl7bfh8nazaylafk09e2ol2rq9d38v382ac.png)
+
 **Download the scripts and run as:**
 
 `/bin/bash Initial_MLsetup.sh all`
 
 This will install all ML libraries and packages.
 
-**Libraries and packages Included**
+## Libraries and packages Included
 
 1. numpy 
 2. nose
@@ -51,4 +53,8 @@ This will install all ML libraries and packages.
 40. pytz 
 41. dateutil
 42. setools
+
+## Contributors:
+
+Original developers: [Deepak Chawla] (https://github.com/DeepakChawla) and [Shruti kerkar] (https://github.com/shrukerkar). 
 
